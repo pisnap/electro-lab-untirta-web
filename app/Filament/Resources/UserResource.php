@@ -8,6 +8,8 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
@@ -18,6 +20,8 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
+    // protected static ?string $label = 'Users';
+
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
     public static function form(Form $form): Form
@@ -27,16 +31,23 @@ class UserResource extends Resource
                 TextInput::make('nim')
                     ->label('Nomor Induk Mahasiswa')
                     ->required()
-                    ->numeric()
-                    ->unique(),
+                    ->numeric(),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('username')
-                    ->required()
-                    ->unique(),
+                    ->required(),
                 TextInput::make('email'),
                 TextInput::make('password')
-                    ->required(),
+                    ->password()
+                    ->dehydrated(fn($state) => filled($state))
+                    ->required(fn(string $context): bool => $context === 'create'),
+                Select::make('role')
+                    ->required()
+                    ->native(false)
+                    ->options([
+                        'admin' => 'Admin',
+                        'user' => 'User',
+                    ]),
             ]);
     }
 
@@ -44,7 +55,11 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('nim')->label('NIM'),
+                TextColumn::make('name'),
+                TextColumn::make('username'),
+                TextColumn::make('email'),
+                TextColumn::make('role'),
             ])
             ->filters([
                 //
@@ -70,8 +85,8 @@ class UserResource extends Resource
     {
         return [
             'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            // 'create' => Pages\CreateUser::route('/create'),
+            // 'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

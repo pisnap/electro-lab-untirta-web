@@ -2,8 +2,12 @@
 
 namespace App\Filament\Resources\UserResource\Pages;
 
-use App\Filament\Resources\UserResource;
 use Filament\Actions;
+use Livewire\Attributes\On;
+use Filament\Actions\CreateAction;
+use Filament\Actions\ImportAction;
+use App\Filament\Imports\UserImporter;
+use App\Filament\Resources\UserResource;
 use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
@@ -13,7 +17,14 @@ class ListUsers extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make()
+                ->label('Create User'),
+            ImportAction::make()
+                ->color('primary')
+                ->label('Import User')
+                ->modalHeading('Import Data User')
+                ->icon('heroicon-o-arrow-down-tray')
+                ->importer(UserImporter::class),
         ];
     }
 }
