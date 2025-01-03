@@ -9,10 +9,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
-<<<<<<< HEAD
 use App\Filament\Exports\UserExporter;
-=======
->>>>>>> bd0903c7e84b65cd37a9856610d04cb0e6794b08
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -60,12 +57,8 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-<<<<<<< HEAD
                 TextColumn::make('nim')
                     ->label('NIM'),
-=======
-                TextColumn::make('nim')->label('NIM'),
->>>>>>> bd0903c7e84b65cd37a9856610d04cb0e6794b08
                 TextColumn::make('name'),
                 TextColumn::make('username'),
                 TextColumn::make('email'),
