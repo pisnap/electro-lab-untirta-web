@@ -14,19 +14,11 @@ class UserImporter extends Importer
     public static function getColumns(): array
     {
         return [
-            ImportColumn::make('nim')
-                ->numeric()
-                ->rules(['numeric']),
-            ImportColumn::make('name')
-                ->requiredMapping()
-                ->rules(['required', 'max:255']),
-            ImportColumn::make('username')
-                ->rules(['max:50']),
-            ImportColumn::make('email')
-                ->rules(['email', 'max:255']),
-            ImportColumn::make('password')
-                ->requiredMapping()
-                ->rules(['required', 'max:255']),
+            ImportColumn::make('nim'),
+            ImportColumn::make('name'),
+            ImportColumn::make('username'),
+            ImportColumn::make('email'),
+            ImportColumn::make('password'),
             ImportColumn::make('role'),
         ];
     }

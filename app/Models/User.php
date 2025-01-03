@@ -17,14 +17,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'nim',
-        'name',
-        'username',
-        'email',
-        'password',
-        'role',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,5 +40,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function teknikdigital()
+    {
+        return $this->hasOne(Teknikdigital::class, 'nim', 'nim');
+    }
+
+    public function pengolahansinyaldigital()
+    {
+        return $this->hasOne(Pengolahansinyaldigital::class, 'nim', 'nim');
     }
 }

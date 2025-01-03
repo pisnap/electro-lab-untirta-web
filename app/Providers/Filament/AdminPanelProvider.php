@@ -6,9 +6,9 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
-use Filament\Pages\Auth\Login;
+use App\Filament\Pages\Auth\Login;
 use Filament\Support\Colors\Color;
-use Filament\Pages\Auth\EditProfile;
+use App\Filament\Pages\Auth\EditProfile;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->spa()
-            ->profile()
+            ->profile(EditProfile::class)
             ->brandName('ELECTRO LAB UNTRITA')
             ->favicon(asset('/logolab.png'))
             ->breadcrumbs(false)
