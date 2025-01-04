@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('exports', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->timestamp('completed_at')->nullable();
             $table->string('file_disk');
             $table->string('file_name')->nullable();
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('processed_rows')->default(0);
             $table->unsignedInteger('total_rows');
             $table->unsignedInteger('successful_rows')->default(0);
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id')->index('exports_user_id_foreign');
             $table->timestamps();
         });
     }

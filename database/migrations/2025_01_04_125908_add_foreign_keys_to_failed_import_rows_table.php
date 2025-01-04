@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('failed_import_rows', function (Blueprint $table) {
-            $table->id();
-            $table->json('data');
-            $table->foreignId('import_id')->constrained()->cascadeOnDelete();
-            $table->text('validation_error')->nullable();
-            $table->timestamps();
+        Schema::table('failed_import_rows', function (Blueprint $table) {
+            $table->foreign(['import_id'])->references(['id'])->on('imports')->onUpdate('restrict')->onDelete('cascade');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('failed_import_rows');
+        Schema::table('failed_import_rows', function (Blueprint $table) {
+            $table->dropForeign('failed_import_rows_import_id_foreign');
+        });
     }
 };

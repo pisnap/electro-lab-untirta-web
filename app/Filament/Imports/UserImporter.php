@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Filament\Imports;
-
+set_time_limit(600);
 use App\Models\User;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
