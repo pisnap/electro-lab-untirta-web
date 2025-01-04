@@ -51,4 +51,24 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pengolahansinyaldigital::class, 'nim', 'nim');
     }
+
+    public function rangkaianlistrik()
+    {
+        return $this->hasOne(Rangkaianlistrik::class, 'nim', 'nim');
+    }
+
+    public function elektronikadaya()
+    {
+        return $this->hasOne(Elektronikadaya::class, 'nim', 'nim');
+    }
+
+    public function antenadanpropagasi()
+    {
+        return $this->hasOne(Antenadanpropagasi::class, 'nim', 'nim');
+    }
+
+    public function dasartelekomunikasi()
+    {
+        return $this->hasOne(Dasartelekomunikasi::class, 'nim', 'nim');
+    }
 }

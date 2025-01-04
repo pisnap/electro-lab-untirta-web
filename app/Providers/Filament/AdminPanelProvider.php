@@ -8,7 +8,9 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use App\Filament\Pages\Auth\Login;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use App\Filament\Pages\Auth\EditProfile;
+use Filament\Navigation\NavigationGroup;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -60,6 +62,29 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Lab. Dasar Elektro')
+                    ->icon('heroicon-o-bolt'),
+                NavigationGroup::make()
+                    ->label('Lab. Kendali')
+                    ->icon('heroicon-o-bolt'),
+                NavigationGroup::make()
+                    ->label('Lab. Komputer')
+                    ->icon('heroicon-o-bolt'),
+                NavigationGroup::make()
+                    ->label('Lab. Telekomunikasi')
+                    ->icon('heroicon-o-bolt'),
+                NavigationGroup::make()
+                    ->label('Lab. Tenaga')
+                    ->icon('heroicon-o-bolt'),
+            ])
+            ->renderHook(
+                // This line tells us where to render it
+                'panels::body.end',
+                // This is the view that will be rendered
+                fn() => view('Footer'),
+            );
     }
 }

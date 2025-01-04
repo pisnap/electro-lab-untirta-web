@@ -7,28 +7,28 @@ use Filament\Pages\Page;
 use Filament\Actions\ExportAction;
 use Filament\Actions\ImportAction;
 use Illuminate\Support\Facades\Auth;
-use App\Filament\Exports\TeknikdigitalExporter;
-use App\Filament\Imports\TeknikdigitalImporter;
+use App\Filament\Exports\AntenadanpropagasiExporter;
+use App\Filament\Imports\AntenadanpropagasiImporter;
 
-class Transparansitd extends Page
+class Transparansiadp extends Page
 {
     // protected static ?string $navigationIcon = 'heroicon-o-star';
 
-    protected static string $view = 'filament.pages.transparansitd';
+    protected static string $view = 'filament.pages.transparansiadp';
 
-    protected static ?string $navigationLabel = 'Nilai Teknik Digital';
+    protected static ?string $navigationLabel = 'Nilai Antena dan Propagasi';
 
     protected static ?string $title = 'Transparansi Nilai';
 
-    protected static ?string $slug = 'transparansi-teknik-digital';
+    protected static ?string $slug = 'transparansi-antena-dan-propagasi';
 
-    protected static ?string $navigationGroup = 'Lab. Dasar Elektro';
+    protected static ?string $navigationGroup = 'Lab. Telekomunikasi';
 
     public $users;
 
     public function mount()
     {
-        $this->users = User::with('Teknikdigital')->get();
+        $this->users = User::with('Antenadanpropagasi')->get();
     }
 
     protected function getHeaderActions(): array
@@ -39,14 +39,14 @@ class Transparansitd extends Page
                 ->label('Import Nilai')
                 ->modalHeading('Import Nilai')
                 ->icon('heroicon-o-arrow-up-tray')
-                ->importer(TeknikdigitalImporter::class)
+                ->importer(AntenadanpropagasiImporter::class)
                 ->visible(fn () => Auth::user()->role == 'Admin'),
             ExportAction::make()
                 ->color('primary')
                 ->label('Export Nilai')
                 ->modalHeading('Export Nilai')
                 ->icon('heroicon-o-arrow-down-tray')
-                ->exporter(TeknikdigitalExporter::class)
+                ->exporter(AntenadanpropagasiExporter::class)
                 ->visible(fn () => Auth::user()->role == 'Admin'),
         ];
     }
