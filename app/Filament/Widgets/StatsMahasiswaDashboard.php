@@ -2,25 +2,28 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Antenadanpropagasi;
-use App\Models\Dasarelektronika;
-use App\Models\Dasarsistemkendali;
-use App\Models\Dasartelekomunikasi;
+use App\Models\User;
+use App\Models\Mesinlistrik;
+use App\Models\Teknikdigital;
 use App\Models\Elektronikadaya;
+use App\Models\Dasarelektronika;
 use App\Models\Instrumenkendali;
 use App\Models\Komputasinumerik;
-use App\Models\Mesinlistrik;
-use App\Models\Pengolahansinyaldigital;
-use App\Models\Pengukuranlistrik;
 use App\Models\Rangkaianlistrik;
+use App\Models\Pengukuranlistrik;
+use App\Models\Antenadanpropagasi;
+use App\Models\Dasarsistemkendali;
+use App\Models\Dasartelekomunikasi;
 use App\Models\Sistemkendalidigital;
-use App\Models\Teknikdigital;
-use App\Models\User;
+use App\Models\Pengolahansinyaldigital;
+use Filament\Widgets\StatsOverviewWidget\Card;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 
 class StatsMahasiswaDashboard extends BaseWidget
 {
+    protected static ?int $sort = -2;
+
     protected function getStats(): array
     {
         $totalPraktikan = User::where('role', 'User')->count();

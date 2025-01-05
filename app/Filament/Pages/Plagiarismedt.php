@@ -3,23 +3,23 @@
 namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
-use App\Models\Plagiarismede as PlagiarismedeModel;
 use Filament\Actions\ImportAction;
 use Illuminate\Support\Facades\Auth;
 use Filament\Pages\Actions\ButtonAction;
-use App\Filament\Imports\PlagiarismeplImporter;
+use App\Filament\Imports\PlagiarismedtImporter;
+use App\Models\Plagiarismedt as PlagiarismedtModel;
 
-class Plagiarismede extends Page
+class Plagiarismedt extends Page
 {
     // protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament.pages.plagiarismede';
+    protected static string $view = 'filament.pages.plagiarismedt';
 
-    protected static ?string $navigationLabel = 'Plagiarisme Dasar Elektronika';
+    protected static ?string $navigationLabel = 'Plagiarisme Dasar Telekomunikasi';
 
     protected static ?string $title = 'Daftar Plagiarisme';
 
-    protected static ?string $slug = 'transparansi-plagiarisme-de';
+    protected static ?string $slug = 'transparansi-plagiarisme-dt';
 
     protected static ?string $navigationGroup = 'Plagiarisme (Copas)';
 
@@ -32,7 +32,7 @@ class Plagiarismede extends Page
                 ->color('danger')
                 ->action(function () {
                     // Menghapus semua data dari tabel plagiarisme
-                    PlagiarismedeModel::query()->delete();
+                    PlagiarismedtModel::query()->delete();
 
                     // Menampilkan pesan sukses
                     session()->flash('message', 'All plagiarism data has been deleted.');
@@ -47,7 +47,7 @@ class Plagiarismede extends Page
                 ->label('Import Data')
                 ->modalHeading('Import Data Plagiarism')
                 ->icon('heroicon-o-arrow-up-tray')
-                ->importer(PlagiarismeplImporter::class)
+                ->importer(PlagiarismedtImporter::class)
                 ->visible(fn() => Auth::user()->role == 'Admin'),
         ];
     }

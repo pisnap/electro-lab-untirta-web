@@ -45,7 +45,7 @@ class Plagiarismepl extends Page
             ImportAction::make()
                 ->color('primary')
                 ->label('Import Data')
-                ->modalHeading('Import Data Plagiarisme')
+                ->modalHeading('Import Data Plagiarism')
                 ->icon('heroicon-o-arrow-up-tray')
                 ->importer(PlagiarismeplImporter::class)
                 ->visible(fn() => Auth::user()->role == 'Admin'),
