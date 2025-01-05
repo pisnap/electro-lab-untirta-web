@@ -78,11 +78,12 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label('Lab. Tenaga')
                     ->icon('heroicon-o-bolt'),
+                NavigationGroup::make()
+                    ->label('Plagiarisme (Copas)')
+                    ->icon('heroicon-o-exclamation-triangle'),
             ])
             ->renderHook(
-                // This line tells us where to render it
                 'panels::body.end',
-                // This is the view that will be rendered
                 fn() => view('Footer'),
             );
     }

@@ -22,7 +22,7 @@ class Transparansidsk extends Page
 
     protected static ?string $slug = 'transparansi-dasar-sistem-kendali';
 
-    protected static ?string $navigationGroup = 'Lab. Tenaga';
+    protected static ?string $navigationGroup = 'Lab. Kendali';
 
     public $users;
 
