@@ -71,4 +71,39 @@ class User extends Authenticatable
     {
         return $this->hasOne(Dasartelekomunikasi::class, 'nim', 'nim');
     }
+
+    public function pengukuranlistrik()
+    {
+        return $this->hasOne(Pengukuranlistrik::class, 'nim', 'nim');
+    }
+
+    public function dasarelektronika()
+    {
+        return $this->hasOne(Dasarelektronika::class, 'nim', 'nim');
+    }
+
+    public function instrumenkendali()
+    {
+        return $this->hasOne(Instrumenkendali::class, 'nim', 'nim');
+    }
+
+    public function dasarsistemkendali()
+    {
+        return $this->hasOne(Dasarsistemkendali::class, 'nim', 'nim');
+    }
+
+    public function sistemkendalidigital()
+    {
+        return $this->hasOne(Sistemkendalidigital::class, 'nim', 'nim');
+    }
+
+    public function mesinlistrik()
+    {
+        return $this->hasOne(Mesinlistrik::class, 'nim', 'nim');
+    }
+
+    public function komputasinumerik()
+    {
+        return $this->hasOne(Komputasinumerik::class, 'nim', 'nim');
+    }
 }

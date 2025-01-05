@@ -12,6 +12,7 @@ use Filament\Forms\Components\Select;
 use App\Filament\Exports\UserExporter;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\BadgeColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Tables\Actions\ExportBulkAction;
 use App\Filament\Resources\UserResource\Pages;
@@ -58,11 +59,18 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nim')
-                    ->label('NIM'),
-                TextColumn::make('name'),
-                TextColumn::make('username'),
+                    ->label('NIM')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('name')
+                    ->searchable(),
                 TextColumn::make('email'),
-                TextColumn::make('role'),
+                BadgeColumn::make('role')
+                    ->colors([
+                        'warning' => 'User',
+                        'success' => 'Admin',
+                    ])
+                    ->sortable()
             ])
             ->filters([
                 //
