@@ -8,6 +8,7 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use App\Filament\Pages\Auth\Login;
 use Filament\Support\Colors\Color;
+use Illuminate\Support\Facades\URL;
 use App\Filament\Pages\Auth\EditProfile;
 use Filament\Navigation\NavigationGroup;
 use Filament\Http\Middleware\Authenticate;
@@ -25,6 +26,7 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        URL::forceScheme('https');
         return $panel
             ->default()
             ->spa()
