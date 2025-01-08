@@ -4,6 +4,7 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteRule ^js/(.*)$ public/js/$1/$2/$3 [L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
