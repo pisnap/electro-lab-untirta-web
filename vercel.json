@@ -13,15 +13,11 @@
         },
         {
             "src": "/(css|js|vendor|assets|build)/(.*)",
-            "dest": "public/$1/$2/$3"
+            "dest": "/public/$1/$2/$3"
         },
         {
-            "src": "/(favicon\\.png|logoKP\\.png)",
-            "dest": "public"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "src": "/(favicon\\.png|logolab\\.png)",
+            "dest": "/public"
         }
     ],
     "env": {
