@@ -84,7 +84,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 'panels::body.end',
-                fn() => view('Footer'),
+                fn() => view('footer'),
             );
     }
 }
